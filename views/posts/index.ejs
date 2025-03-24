@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Blogs - rasa_jadoel</title>
+    <title>Data Blogs - WeBoost</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
@@ -49,7 +49,7 @@
                                 <th scope="col">Gambar</th>
                                 <th scope="col">Nama Produk</th>
                                 <th scope="col">Deskripsi</th>
-                                <th scope="col">Resep</th>
+                                <th scope="col">Harga</th>
                                 <th scope="col">Aksi</th>
                               </tr>
                             </thead>
@@ -63,7 +63,7 @@
                                             </td>
                                             <td><%= data[i].nama_produk %></td>
                                             <td class="deskripsi-col"><%= data[i].deskripsi %></td>
-                                            <td class="resep-col"><%= data[i].resep %></td>
+                                            <td class="harga-col"><%= data[i].harga %></td>
 
                                             <td class="text-center">
                                                 <a href="/posts/edit/<%=data[i].id%>" class="btn btn-sm btn-primary">EDIT
