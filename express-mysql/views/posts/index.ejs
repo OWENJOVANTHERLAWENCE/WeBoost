@@ -49,7 +49,9 @@
                                 <th scope="col">Gambar</th>
                                 <th scope="col">Nama Produk</th>
                                 <th scope="col">Deskripsi</th>
-                                <th scope="col">Harga</th>
+                                <th scope="col">Kategori</th>
+                                <th scope="col">Harga Produk</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                               </tr>
                             </thead>
@@ -63,7 +65,9 @@
                                             </td>
                                             <td><%= data[i].nama_produk %></td>
                                             <td class="deskripsi-col"><%= data[i].deskripsi %></td>
-                                            <td class="harga-col"><%= data[i].harga %></td>
+                                            <td class="kategori-col"><%= data[i].kategori %></td>
+                                            <td class="harga_produk-col"><%= data[i].harga_produk %></td>
+                                            <td class="status-col"><%= data[i].status %></td>
 
                                             <td class="text-center">
                                                 <a href="/posts/edit/<%=data[i].id%>" class="btn btn-sm btn-primary">EDIT

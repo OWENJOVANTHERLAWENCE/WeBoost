@@ -55,7 +55,9 @@ router.get('/create', function (req, res, next) {
         gambar_produk: '',
         nama_produk: '',
         deskripsi: '',
-        harga: ''
+        kategori: '',
+        harga_produk: '',
+        status: ''
     });
 });
 
@@ -79,15 +81,15 @@ router.post('/store', function (req, res, next) {
         }
 
         var gambar_produk = req.file.filename; // Corrected variable name
-        var { nama_produk, deskripsi, harga } = req.body;
+        var { nama_produk, deskripsi, kategori, harga_produk, status } = req.body;
 
-        if(!nama_produk || !deskripsi || !harga || !gambar_produk) {
+        if(!nama_produk || !deskripsi || !kategori || !harga_produk || !status || !gambar_produk) {
             req.flash('error', 'Silakan lengkapi semua kolom');
-            console.error('Validation Error:', { nama_produk, deskripsi, harga, gambar_produk });
+            console.error('Validation Error:', { nama_produk, deskripsi, kategori, harga_produk, status, gambar_produk });
             return res.redirect('/posts/create');
         }
 
-        var formData = { gambar_produk, nama_produk, deskripsi, harga };
+        var formData = { gambar_produk, nama_produk, deskripsi, kategori, harga_produk, status };
         connection.query('INSERT INTO posts SET ?', formData, function(err, result) {
             if (err) {
                 req.flash('error', 'Gagal menyimpan data. Silakan coba lagi.');
@@ -117,7 +119,9 @@ router.get('/edit/(:id)', function(req, res, next) {
                 gambar_produk: rows[0].gambar_produk,
                 nama_produk: rows[0].nama_produk,
                 deskripsi: rows[0].deskripsi,
-                harga: rows[0].harga
+                kategori: rows[0].kategori,
+                harga_produk: rows[0].harga_produk,
+                status: rows[0].status,
             });
         }
     });
@@ -135,14 +139,18 @@ router.post('/update/:id', function (req, res, next) {
         let id = req.params.id;
         let nama_produk = req.body.nama_produk;
         let deskripsi = req.body.deskripsi;
-        let harga = req.body.harga;
+        let kategori = req.body.kategori;
+        let harga_produk = req.body.harga_produk;
+        let status = req.body.status;
         let old_gambar_produk = req.body.old_gambar_produk;
         let gambar_produk = req.file ? req.file.filename : old_gambar_produk;
         let errors = false;
 
         console.log('Nama Produk:', nama_produk);
         console.log('Deskripsi:', deskripsi);
-        console.log('Harga:', harga);
+        console.log('Kategori:', kategori);
+        console.log('Harga_Produk:', harga_produk);
+        console.log('Status:', status);
         console.log('Old Gambar Produk:', old_gambar_produk);
         console.log('Gambar Produk:', gambar_produk);
 
@@ -156,9 +164,19 @@ router.post('/update/:id', function (req, res, next) {
             req.flash('error', "Silahkan Masukkan Deskripsi Produk");
         }
 
-        if (!harga) {
+        if (!kategori) {
+            errors = true;
+            req.flash('error', "Silahkan Masukkan Kategori Produk");
+        }
+
+        if (!harga_produk) {
             errors = true;
             req.flash('error', "Silahkan Masukkan Harga Produk");
+        }
+
+        if (!status) {
+            errors = true;
+            req.flash('error', "Silahkan Masukkan Status");
         }
 
         if (errors) {
@@ -166,7 +184,9 @@ router.post('/update/:id', function (req, res, next) {
                 id: id,
                 nama_produk: nama_produk,
                 deskripsi: deskripsi,
-                harga: harga,
+                kategori: kategori,
+                harga_produk: harga_produk,
+                status: status,
                 gambar_produk: old_gambar_produk
             });
         }
@@ -175,7 +195,9 @@ router.post('/update/:id', function (req, res, next) {
             gambar_produk: gambar_produk,
             nama_produk: nama_produk,
             deskripsi: deskripsi,
-            harga: harga
+            kategori: kategori,
+            harga_produk: harga_produk,
+            status: status
         };
 
         connection.query('UPDATE posts SET ? WHERE id = ?', [formData, id], function(err, result) {
@@ -185,7 +207,9 @@ router.post('/update/:id', function (req, res, next) {
                     id: id,
                     nama_produk: nama_produk,
                     deskripsi: deskripsi,
-                    harga: harga,
+                    kategori: kategori,
+                    harga_produk: harga_produk,
+                    status: status,
                     gambar_produk: old_gambar_produk 
                 });
             } else {
