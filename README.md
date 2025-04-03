@@ -2,5 +2,5 @@
 
 Berikut adalah screenshot dari fitur CRUD di aplikasi WeBoost:
 
-![CRUD Screenshot](CRUD/image.png)
+![CRUD Screenshot](CRUD/image1.png)
 
