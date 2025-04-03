@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeBoost - Home</title>
+    <style>
+        /* Pastikan background benar-benar hitam */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #000 !important; /* Pakai !important biar gak kena override */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* Container utama */
+        .hero {
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        /* Tombol */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #000;
+            background-color: #fff;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>We Boost Your Business</h1>
+        <p>Kami memberikan solusi kreatif untuk meningkatkan bisnis Anda.</p>
+        <a href="/posts" class="btn">Masuk</a>
+    </section>
+
+</body>
 </html>
